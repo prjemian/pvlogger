@@ -80,7 +80,7 @@ class PvLogger:
         self.pvs = {}
         for i, pv in enumerate(pvlist):
             logger.debug("Connecting PV %s", pv)
-            self.pvs[f"pv{i+1}"] = EpicsSignalRO(pv, name=f"{pv}{i+1}")
+            self.pvs[f"pv{i+1}"] = EpicsSignalRO(pv, name=pv)
         self.base_path = path or DEFAULT_PATH
         self.file_extension = "txt"
         self.recording = None
@@ -170,11 +170,11 @@ class PvLogger:
                     f"{dt.timestamp():.02f}",
                 ]
                 for pv in self.pvs.values():
+                    logger.debug(pv.read())
                     record.append(f"{pv.get()}")
                 record.append(f"{dt}")
                 values = "\t".join(record)
                 f.write(values + "\n")
-                logger.debug(values)
         except Exception as exc:
             logger.info("Continuing after exception: %s", exc)
 
