@@ -12,6 +12,7 @@ Motivated by an experiment at the APS.
   - [Notes](#notes)
   - [Command-line help](#command-line-help)
   - [Example](#example)
+  - [Citations](#citations)
 
 ## Objectives
 
@@ -26,9 +27,14 @@ Motivated by an experiment at the APS.
 
 ## Notes
 
-The [dhtioc](https://github.com/prjemian/dhtioc) project
-has the [datalogger](https://github.com/prjemian/dhtioc/blob/main/dhtioc/datalogger.py)
-module that was used as a starting point.
+When creating a log entry for the first time, this code will create all
+necessary directories to store the log file.
+
+If the log file exists for the current log entry, the new data will be appended
+to that file (even if the list of PVs is different).
+
+**IMPORTANT**: Keep in mind, if you change the list of PVs, you should point to
+a different base directory to store your logs!
 
 ## Command-line help
 
@@ -86,3 +92,8 @@ which showed this output:
 [INFO 2021-06-26 16:50:52.453 222] Periodic recording thread exiting...
 ```
 
+## Citations
+
+The [dhtioc](https://github.com/prjemian/dhtioc) project
+has the [datalogger](https://github.com/prjemian/dhtioc/blob/main/dhtioc/datalogger.py)
+module that was used as a starting point.
