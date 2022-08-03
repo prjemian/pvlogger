@@ -20,7 +20,6 @@ from ophyd import EpicsSignalRO
 import argparse
 import datetime
 import logging
-import os
 import pathlib
 import threading
 import time
@@ -28,9 +27,9 @@ import time
 
 DEFAULT_RECORDING_PERIOD_S = 10
 DEFAULT_RECORDING_DURATION_S = 60 * 60
-HOME_PATH = str(pathlib.Path.home())
+HOME_PATH = pathlib.Path.home()
 # NOTE: assumes ~/Documents exists and is writeable!
-DEFAULT_PATH = os.path.join(HOME_PATH, "Documents", "pvlogger")
+DEFAULT_PATH = str(HOME_PATH / "Documents" / "pvlogger")
 
 logging.basicConfig(
     level=logging.WARNING,
